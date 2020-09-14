@@ -17,10 +17,10 @@ class MyExpensiveObjectImp :
     }
 
     override fun foo() {
-        Log.d("MyExpensiveObjectImp", "foo method invoked on object index $index" )
+        Log.d("MyExpensiveObjectImp", "foo method, object index $index" )
     }
 
     override fun bar() {
-        Log.d("MyExpensiveObjectImp", "bar method invoked on object index $index" )
+        Log.d("MyExpensiveObjectImp", "bar method, object index $index" )
     }
 }
