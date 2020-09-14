@@ -6,11 +6,12 @@ import com.chaim.objectspoolexcersize.myobjectspool.myexpensiveobject.IMyExpensi
 class MyExpensiveObjectImp :
     IMyExpensiveObject {
 
-    val index:Int = count
+    private val index:Int = count
 
     init {
         count++
     }
+
     companion object{
         private var count:Int=0
     }
@@ -20,6 +21,6 @@ class MyExpensiveObjectImp :
     }
 
     override fun bar() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.d("MyExpensiveObjectImp", "bar method invoked on object index $index" )
     }
 }

@@ -15,14 +15,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         myExpensiveObject = MyExpensiveObjectsPool.pull()
-        repeat(5) {
-            test()
-        }
         myExpensiveObject.foo()
+
+        repeat(5) {
+            MyExpensiveObjectsPool.pull().foo()
+            System.gc()
+        }
     }
 
-    private fun test(){
-        MyExpensiveObjectsPool.pull().foo()
-        System.gc()
-    }
 }

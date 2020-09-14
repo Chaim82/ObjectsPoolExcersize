@@ -20,6 +20,13 @@ object MyExpensiveObjectsPool {
         objectsList.addBatchOfObjects()
     }
 
+
+    /**
+     * The function returns a proxy to "real" object, and keeps a weakReference to the proxy in "inUseList".
+     * When there is no free real object the function checks if there is any proxy in "inUseList" that has
+     * been released by the garbage collector, if so ,the function reuses the proxy's real object, if not,
+     * the function creates new real objects and returns a proxy of one of them
+     */
     fun pull(): IMyExpensiveObject{
         synchronized(this){
             if(objectsList.size > 0){
@@ -39,16 +46,13 @@ object MyExpensiveObjectsPool {
                 if(objectsList.size == 0){
                     objectsList.addBatchOfObjects()
                 }
-                else{
-                    Log.d("chaim", "recycle")
-                }
-               return pull()
+                return pull()
             }
         }
     }
 
     private fun ArrayList<MyExpensiveObjectImp>.addBatchOfObjects(){
-        repeat(2) {
+        repeat(5) {
              add(MyExpensiveObjectImp())
         }
     }
